@@ -1,42 +1,15 @@
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from flask import Flask, jsonify
-from Pets import Pets
+from flask import Flask, render_template, url_for
 
-DATABASE = 'postgresql'
-USER = 'postgres'
-PASSWORD = 'postgres'
-HOST = 'localhost'
-PORT = '5431'
-DB_NAME = 'animal_db'
+from pymod.endpoint.index import index_fnc
 
-
-CONNECT_STR = '{}://{}:{}@{}:{}/{}'.format(
-    DATABASE,
-    USER,
-    PASSWORD,
-    HOST,
-    PORT,
-    DB_NAME
-)
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='html/static', template_folder='html/templates')
 
 
 @app.route('/')
-def root():
-    return "root"
-
-
-@app.route('/hello/<name>')
-def hello(name):
-    engine = create_engine(CONNECT_STR, connect_args={"application_name":"py_app"})
-    session = sessionmaker(engine)()
-    pets = session.query(Pets).filter(Pets.name==name).all()
-    session.close()
-    engine.dispose()
-    return jsonify(pets)
+@app.route('/index')
+def index():
+    return index_fnc()
 
 if __name__ == "__main__":
     app.run()

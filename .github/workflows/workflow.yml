@@ -36,7 +36,7 @@ jobs:
     # Azure login
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_86ee3397 }}
+        creds: ${{ secrets.AZURE_CREDENTIALS_ee40052d }}
 
     - uses: azure/appservice-settings@v1
       with:

@@ -1,0 +1,7 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+<script type=text/javascript src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+<body>
+    <h1 id="hello"> HELLOW FLASK </h1>
+    {% block content %}{% endblock %}
+</body>
