@@ -34,14 +34,6 @@ jobs:
         pip install setuptools
         pip install -r requirements.txt
 
-    # test python
-    - name: pytest
-      working-directory: .
-      run: |
-        pip install pytest
-        pip install -r requirements.txt
-        python -m pytest
-
     # Azure login
     - uses: azure/login@v1
       with:
