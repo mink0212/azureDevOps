@@ -15,7 +15,7 @@ class ViewTest(unittest.TestCase):
 
 	def test_unit_home(self):
 		response = self.app.get('/')
-		self.assertEqual(response.status_code, 500)
+		self.assertEqual(response.status_code, 200)
 
 	def test_unit_contact(self):
 		response = self.app.get('/index')
