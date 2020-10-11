@@ -30,14 +30,16 @@ jobs:
         sudo apt install python3.7-venv
         python -m venv --copies antenv
         source antenv/bin/activate
+        pip install --upgrade pip
         pip install setuptools
-        pip install pytest
         pip install -r requirements.txt
 
     # test python
     - name: pytest
       working-directory: .
-      run: python -m pytest
+      run: |
+        pip install pytest
+        python -m pytest
 
     # Azure login
     - uses: azure/login@v1
