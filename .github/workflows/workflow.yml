@@ -30,11 +30,9 @@ jobs:
         sudo apt install python3.7-venv
         python -m venv --copies antenv
         source antenv/bin/activate
-        pip install --upgrade pip
         pip install setuptools
         pip install -r requirements.txt
 
-    # test python
     - name: pytest
       working-directory: .
       run: |
@@ -45,17 +43,17 @@ jobs:
     # Azure login
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_ee40052d }}
+        creds: ${{ secrets.AZURE_CREDENTIALS_395f2242 }}
 
     - uses: azure/appservice-settings@v1
       with:
-        app-name: customAzureFlask
+        app-name: GitAzurePython
         general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
 
     # deploy web app
-    - uses: azure/webapps-deploy@v2
+    - uses: azure/webapps-deploy@v1
       with:
-        app-name: customAzureFlask
+        app-name: GitAzurePython
         package: .
 
     # Azure logout
