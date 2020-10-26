@@ -43,17 +43,17 @@ jobs:
     # Azure login
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_395f2242 }}
+        creds: ${{ secrets.AZURE_CREDENTIALS_4bff6700 }}
 
     - uses: azure/appservice-settings@v1
       with:
-        app-name: GitAzurePython
+        app-name: azureflask
         general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
 
     # deploy web app
-    - uses: azure/webapps-deploy@v2
+    - uses: azure/webapps-deploy@v1
       with:
-        app-name: GitAzurePython
+        app-name: azureflask
         package: .
 
     # Azure logout
